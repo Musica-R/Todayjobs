@@ -138,6 +138,12 @@
 .view-all {
   color: #2563eb;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  border: 1px solid #2563eb;
+  border-radius: 8px;
+  padding: 10px 22px;
 }
 
 .job-cardimgsec {
@@ -178,6 +184,9 @@
   border-radius: 14px;
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
   text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .job-card h4 {

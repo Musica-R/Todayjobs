@@ -4,9 +4,9 @@ import jobsData from "../data/jobsData";
 
 const stats = [
   { value: "100+", label: "Active Jobs", img: "/assets/Group 94.png" },
-  { value: "3000+", label: "Companies", img: "/assets/Group 95.png"  },
-  { value: "3000+", label: "Candidates", img: "/assets/Group 96.png"  },
-  { value: "2k+", label: "New Jobs", img: "/assets/Group 94.png"  },
+  { value: "3000+", label: "Companies", img: "/assets/Group 95.png" },
+  { value: "3000+", label: "Candidates", img: "/assets/Group 96.png" },
+  { value: "2k+", label: "New Jobs", img: "/assets/Group 94.png" },
 ];
 
 const Home = () => {
@@ -67,7 +67,7 @@ const Home = () => {
       <section className="featured">
         <div className="featured-header">
           <h2>Featured Jobs</h2>
-          <span onClick={()=>{navigate("/jobs")}} className="view-all">View All →</span>
+          <span onClick={() => { navigate("/jobs") }} className="view-all">View All <img className="moreimg" src="/assets/Frame (3).png" alt="" /></span>
         </div>
 
         <p className="subtitle">
