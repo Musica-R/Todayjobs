@@ -1,0 +1,304 @@
+/* ===============================
+   GLOBAL
+================================ */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: #f5f7fb;
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont;
+  color: #1f2937;
+}
+
+/* ===============================
+   PAGE CONTAINER
+================================ */
+.profile-pagepd {
+  max-width: 1200px;
+  margin: 30px auto;
+  padding: 0 20px;
+}
+
+/* ===============================
+   TOP PROFILE CARD
+================================ */
+.profile-headerpd {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background: #ffffff;
+  padding: 24px;
+  border-radius: 14px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04);
+}
+
+.profile-headerpd img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.profile-headerpd h3 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.profile-headerpd p {
+  margin: 4px 0 10px;
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.profile-headerpd .infopd {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  font-size: 13px;
+  color: #6b7280;
+}
+
+/* ===============================
+   MAIN LAYOUT
+================================ */
+.profile-contentpd {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 24px;
+  margin-top: 24px;
+}
+
+/* ===============================
+   SIDEBAR
+================================ */
+.profile-sidebarpd {
+  background: #ffffff;
+  padding: 16px;
+  border-radius: 14px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04);
+  height: fit-content;
+}
+
+.primag {
+  height: 20px;
+}
+
+.profile-sidebarpd button.active .primag {
+  filter: brightness(0.5);
+}
+
+.profile-sidebarpd button {
+  width: 100%;
+  padding: 12px 14px;
+  margin-bottom: 10px;
+  border: none;
+  background: #f1f5ff;
+  color: #374151;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 10px;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.25s ease;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.profile-sidebarpd button:hover {
+  background: #e0e7ff;
+}
+
+.profile-sidebarpd button.active {
+  background: #2563eb;
+  color: #ffffff;
+}
+
+/* ===============================
+   PERSONAL DETAILS CARD
+================================ */
+.profile-mainpd {
+  width: 100%;
+}
+
+.details-cardpd {
+  background: #ffffff;
+  padding: 24px;
+  border-radius: 14px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04);
+}
+
+.details-cardpd .headerpd {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.details-cardpd .headerpd h3 {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.details-cardpd .headerpd button {
+  padding: 8px 14px;
+  font-size: 13px;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  background: #ffffff;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.details-cardpd .headerpd button:hover {
+  background: #f1f5f9;
+}
+
+/* ===============================
+   FORM GRID
+================================ */
+.details-cardpd .grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px 20px;
+}
+
+.details-cardpd label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #6b7280;
+}
+
+.details-cardpd input {
+  width: 100%;
+  padding: 11px 12px;
+  font-size: 14px;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  background: #f9fafb;
+  color: #111827;
+}
+
+.details-cardpd input:focus {
+  outline: none;
+  border-color: #2563eb;
+  background: #ffffff;
+}
+
+.details-cardpd .full {
+  grid-column: span 2;
+}
+
+/* ===============================
+   SAVED JOBS
+================================ */
+.saved-jobspd {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.saved-job-cardpd {
+  background: #ffffff;
+  padding: 16px 18px;
+  border-radius: 12px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.04);
+}
+
+.saved-job-cardpd h4 {
+  margin: 0 0 6px;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.saved-job-cardpd p {
+  margin: 0 0 6px;
+  font-size: 13px;
+  color: #6b7280;
+}
+
+.saved-job-cardpd span {
+  display: inline-block;
+  margin-right: 14px;
+  font-size: 12px;
+  color: #4b5563;
+}
+
+/* ===============================
+   EMPTY STATE
+================================ */
+.saved-jobspd p {
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.infopd span {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.detph {
+  height: 20px !important;
+  width: 20px !important;
+  object-fit: contain;
+}
+
+/* ===============================
+   RESPONSIVE
+================================ */
+@media (max-width: 900px) {
+  .profile-contentpd {
+    grid-template-columns: 1fr;
+    margin-top: 10px;
+    gap: 10px;
+  }
+
+  .profile-pagepd {
+    max-width: 1200px;
+    margin: 10px auto;
+    padding: 0 10px;
+  }
+
+  .saved-jobspd {
+    gap: 10px;
+  }
+
+  .profile-sidebarpd {
+    display: flex;
+    gap: 10px;
+  }
+
+  .profile-sidebarpd button {
+    flex: 1;
+    text-align: center;
+    gap: 5px;
+    margin-bottom: 0px;
+  }
+
+  .details-cardpd .gridpd {
+    grid-template-columns: 1fr;
+  }
+
+  .details-cardpd .fullpd {
+    grid-column: span 1;
+  }
+}
+
+@media (max-width: 600px) {
+  .profile-headerpd {
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+    padding: 10px;
+  }
+
+  .profile-headerpd .infopd {
+    justify-content: center;
+    gap: 10px;
+  }
+}

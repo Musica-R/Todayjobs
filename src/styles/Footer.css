@@ -1,0 +1,150 @@
+/* Main Footer Wrapper */
+.footer-main {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    padding: 60px 80px;
+    background-color: #eef3fb;
+    color: #1e1e1e;
+    flex-wrap: wrap;
+}
+
+/* Each Footer Column */
+.footer1 {
+    flex: 1 1;
+    min-width: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Logo + Description */
+.fochil1 h1 {
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.fochil1 p {
+    font-size: 14px;
+    line-height: 1.6;
+    max-width: 320px;
+    color: #555;
+}
+
+/* Copyright */
+.footer1>p {
+    margin-top: 25px;
+    font-size: 13px;
+    color: #666;
+}
+
+/* Section Headings */
+.footer1 h1 {
+    font-size: 20px;
+    margin-bottom: 18px;
+    font-weight: 600;
+}
+
+/* Quick Links */
+.fochil2 {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.fochil2 li {
+    font-size: 14px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    color: #333;
+}
+
+.fochil2 li:hover {
+    color: #2563eb;
+}
+
+/* Contact Section */
+.fochil3 {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.fochil4 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.fochil4 img {
+    width: 18px;
+    height: 18px;
+}
+
+.fochil4 p {
+    font-size: 14px;
+    color: #333;
+}
+
+.fochil5 p {
+    font-size: 14px;
+    color: #333;
+}
+
+.fochil5 {
+    display: flex;
+    gap: 10px;
+}
+
+/* ---------- MOBILE RESPONSIVE ---------- */
+@media (max-width: 768px) {
+    .fochil3 {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .footer-main {
+        flex-direction: column;
+        padding: 30px 10px;
+        gap: 20px;
+    }
+
+    .footer1 {
+        text-align: left;
+        gap: 10px;
+    }
+
+    .fochil1 p {
+        max-width: 100%;
+    }
+
+    .footer1 h1 {
+        font-size: 18px;
+        margin-bottom: 0px;
+    }
+
+    .fochil5 {
+        display: flex;
+        flex-direction: column;
+        padding-top: 15px;
+        gap: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .fochil1 h1 {
+        font-size: 22px;
+    }
+
+    .fochil2 li,
+    .fochil4 p {
+        font-size: 13px;
+    }
+
+    .footer1>p {
+        font-size: 12px;
+        margin-top: 10px;
+    }
+}

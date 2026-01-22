@@ -1,0 +1,275 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.job-home {
+  font-family: "Segoe UI", sans-serif;
+  background: #f8faff;
+  color: #1e1e1e;
+}
+
+.posted {
+  font-size: 12px;
+}
+
+/* HERO */
+.hero {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.hero h1 {
+  font-size: 42px;
+  font-weight: 700;
+}
+
+.hero h1 span {
+  color: #2563eb;
+}
+
+.hero p {
+  margin: 10px auto;
+  max-width: 700px;
+  color: #6b7280;
+}
+
+/* SEARCH BAR */
+.search-box {
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+}
+
+.input-group {
+  position: relative;
+  flex: 1;
+}
+
+.input-group .icon {
+  position: absolute;
+  top: 50%;
+  left: 12px;
+  transform: translateY(-50%);
+  color: #888;
+  font-size: 16px;
+  height: 20px;
+}
+
+.input-group input,
+.input-group select {
+  width: 100%;
+  padding: 12px 12px 12px 40px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.input-group input:focus,
+.input-group select:focus {
+  outline: none;
+  border-color: #2563eb;
+}
+
+.search-btn {
+  padding: 12px 20px;
+  background: #2563eb;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.search-btn:hover {
+  background: #1e40af;
+}
+
+/* STATS */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  max-width: 1000px;
+  margin: 40px auto 0;
+}
+
+.stat-card {
+  background: #2563EB1A;
+  padding: 10px;
+  border-radius: 12px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.moreimg {
+  height: 15px;
+}
+
+.stat-card h3 {
+  color: #2563eb;
+  font-size: 22px;
+}
+
+.stat-card p {
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.stat-card img {
+  height: 40px;
+}
+
+/* FEATURED JOBS */
+.featured {
+  padding: 60px 20px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.featured-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.view-all {
+  color: #2563eb;
+  cursor: pointer;
+}
+
+.job-cardimgsec {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  padding-bottom: 10px;
+}
+
+.saveit {
+  height: 30px;
+}
+
+.cardimgsec {
+  height: 40px;
+  width: 40px;
+  object-fit: contain;
+  background-color: #e1ebff;
+  border-radius: 5px;
+}
+
+.subtitle {
+  color: #6b7280;
+  margin: 8px 0 24px;
+}
+
+/* JOB CARDS */
+.jobs-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.job-card {
+  background: #fff;
+  padding: 20px;
+  border-radius: 14px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+  text-align: left;
+}
+
+.job-card h4 {
+  margin-bottom: 6px;
+}
+
+.company {
+  font-size: 13px;
+  color: #6b7280;
+}
+
+.job-info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 12px 4px;
+  font-size: 14px;
+}
+
+.skills {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+}
+
+.skills span {
+  background: #eef2ff;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+}
+
+.apply-btn {
+  width: 100%;
+  background: #2563eb;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* MORE JOBS */
+.more-jobs {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.more-jobs button {
+  background: transparent;
+  border: 1px solid #2563eb;
+  color: #2563eb;
+  padding: 10px 22px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  justify-self: anchor-center;
+  gap: 10px;
+}
+
+/* MOBILE RESPONSIVE */
+@media (max-width: 768px) {
+  .job-card {
+    background: #fff;
+    padding: 10px;
+  }
+
+  .hero {
+    text-align: center;
+    padding: 30px 10px;
+  }
+
+  .featured {
+    padding: 30px 10px;
+    max-width: 1200px;
+    margin: auto;
+  }
+
+  .hero h1 {
+    font-size: 30px;
+  }
+
+  .search-box {
+    flex-direction: column;
+  }
+
+  .stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .jobs-grid {
+    grid-template-columns: 1fr;
+  }
+}

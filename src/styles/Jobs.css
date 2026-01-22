@@ -1,0 +1,169 @@
+.jobs-pagejd {
+  background: #f6f9ff;
+  padding-bottom: 60px;
+  font-family: "Segoe UI", sans-serif;
+}
+
+.jobs-herojd {
+  text-align: center;
+  padding: 50px 20px;
+}
+
+.jobs-herojd h1 {
+  font-size: 42px;
+}
+
+.jobs-herojd p {
+  margin: 16px auto;
+  max-width: 700px;
+  color: #6b7280;
+}
+
+.jobs-herojd h1 span {
+  color: #2563eb;
+}
+
+.search-box {
+  margin: 30px auto;
+  display: flex;
+  max-width: 900px;
+  background: #fff;
+  padding: 12px;
+  border-radius: 12px;
+  gap: 10px;
+}
+
+.search-box button {
+  background: #2563eb;
+  color: white;
+  border: none;
+  padding: 10px 22px;
+  border-radius: 8px;
+}
+
+/* TABS */
+.tabs {
+  display: flex;
+  justify-self: center;
+  background-color: #F5F5F5;
+  gap: 10px;
+  width: fit-content;
+  margin-top: 0px;
+  margin-bottom: 20px;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.tabs button {
+  padding: 10px 24px;
+  border-radius: 10px;
+  border: none;
+  background: #F5F5F5;
+  cursor: pointer;
+}
+
+.tabs .active {
+  background: white;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+}
+
+/* JOBS GRID */
+.jobs-gridjd {
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  padding: 0 20px;
+}
+
+.savejd {
+  /* position: absolute; */
+  top: 14px;
+  right: 14px;
+  cursor: pointer;
+  filter: grayscale(1);
+  font-size: 18px;
+}
+
+.savejd.saved {
+  filter: none;
+}
+
+.companyjd {
+  color: #6b7280;
+  font-size: 13px;
+}
+
+.job-info span {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  margin-top: 4px;
+}
+
+.job-info span img {
+  height: 16px;
+}
+
+.skillsjd {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin: 12px 0;
+}
+
+.skillsjd span {
+  background: #eef2ff;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+}
+
+.card-footerjd {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 10px;
+}
+
+.card-footerjd button {
+  background: #2563eb;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.postedjd {
+  font-size: 12px;
+  color: #9ca3af;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .tabs button {
+    padding: 10px;
+    border-radius: 10px;
+  }
+
+  .jobs-gridjd {
+    grid-template-columns: 1fr;
+    padding: 0 10px;
+  }
+
+  .search-box {
+    flex-direction: column;
+  }
+
+  .jobs-herojd {
+    text-align: center;
+    padding: 30px 10px;
+  }
+
+  .jobs-herojd h1 {
+    font-size: 30px;
+  }
+}
