@@ -19,7 +19,6 @@ const jobsData = [
     },
     skills: ["Figma", "Adobe XD", "Miro", "Balsamiq"],
   },
-
   {
     id: "frontend-developer",
     title: "Front-End Developer",
@@ -40,7 +39,6 @@ const jobsData = [
     },
     skills: ["HTML", "CSS", "JavaScript", "React"],
   },
-
   {
     id: "backend-developer",
     title: "Back-End Developer",
@@ -61,7 +59,6 @@ const jobsData = [
     },
     skills: ["Node.js", "Express", "MongoDB", "SQL"],
   },
-
   {
     id: "graphic-designer",
     title: "Graphic Designer",
@@ -82,7 +79,6 @@ const jobsData = [
     },
     skills: ["Photoshop", "Illustrator", "CorelDraw"],
   },
-
   {
     id: "digital-marketing-executive",
     title: "Digital Marketing Executive",
@@ -103,7 +99,6 @@ const jobsData = [
     },
     skills: ["SEO", "Google Ads", "Social Media", "Analytics"],
   },
-
   {
     id: "qa-engineer",
     title: "QA Engineer",

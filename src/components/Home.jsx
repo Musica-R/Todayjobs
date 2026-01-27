@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import "../styles/Home.css";
 import { useNavigate } from "react-router-dom";
-import jobsData from "../data/jobsData";
 
 const stats = [
   { value: "100+", label: "Active Jobs", img: "/assets/Group 94.png" },
@@ -11,30 +10,64 @@ const stats = [
 ];
 
 const Home = () => {
-  const [savedJobs, setSavedJobs] = useState([]);
+  const [jobs, setJobs] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
-  /* LOAD SAVED JOBS */
+  /* FETCH JOBS */
   useEffect(() => {
-    const stored = JSON.parse(localStorage.getItem("savedJobs")) || [];
-    setSavedJobs(stored);
+    const fetchJobs = async () => {
+      try {
+        const res = await fetch("https://jobs.mpdatahub.com/api/job/list");
+        const json = await res.json();
+
+        if (json.status) {
+          setJobs(json.data);
+        } else {
+          setError("Failed to load jobs");
+        }
+      } catch (err) {
+        setError("Something went wrong");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchJobs();
   }, []);
 
-  /* SAVE / UNSAVE */
-  const toggleSave = (job) => {
-    let updated;
+  /* SAVE / UNSAVE USING API */
+  const toggleSave = async (job) => {
+    try {
+      const res = await fetch(
+        "https://jobs.mpdatahub.com/api/job-save-status",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            id: job.id,
+            is_saved: job.is_saved ? 0 : 1,
+          }),
+        }
+      );
 
-    if (savedJobs.find((j) => j.id === job.id)) {
-      updated = savedJobs.filter((j) => j.id !== job.id);
-    } else {
-      updated = [...savedJobs, job];
+      if (res.ok) {
+        setJobs((prev) =>
+          prev.map((j) =>
+            j.id === job.id
+              ? { ...j, is_saved: j.is_saved ? 0 : 1 }
+              : j
+          )
+        );
+      }
+    } catch (err) {
+      console.error("Save job failed");
     }
-
-    setSavedJobs(updated);
-    localStorage.setItem("savedJobs", JSON.stringify(updated));
   };
 
-  const isSaved = (id) => savedJobs.some((job) => job.id === id);
   return (
     <div className="job-home">
       <section className="hero">
@@ -50,18 +83,12 @@ const Home = () => {
         <div className="search-box">
           <div className="input-group">
             <img className="icon" src="/assets/ri_search-line.png" alt="" />
-            <input
-              type="text"
-              placeholder="Job Title, Keywords, or Company"
-            />
+            <input type="text" placeholder="Job Title, Keywords, or Company" />
           </div>
 
           <div className="input-group">
             <img className="icon" src="/assets/Frame (6).png" alt="" />
-            <input
-              type="text"
-              placeholder="Location"
-            />
+            <input type="text" placeholder="Location" />
           </div>
 
           <div className="input-group">
@@ -91,44 +118,58 @@ const Home = () => {
       <section className="featured">
         <div className="featured-header">
           <h2>Featured Jobs</h2>
-          <span onClick={() => { navigate("/jobs") }} className="view-all">View All <img className="moreimg" src="/assets/Frame (3).png" alt="" /></span>
+          <span
+            onClick={() => navigate("/jobs")}
+            className="view-all"
+          >
+            View All{" "}
+            <img className="moreimg" src="/assets/Frame (3).png" alt="" />
+          </span>
         </div>
 
         <p className="subtitle">
           Hand-picked jobs for you based on your profile
         </p>
 
+        {loading && <p>Loading jobs...</p>}
+        {error && <p>{error}</p>}
+
         <div className="jobs-grid">
-          {jobsData.map((job) => (
+          {jobs.map((job) => (
             <div className="job-card" key={job.id}>
-              {/* <div className="job-cardimgsec">
-                <img className="cardimgsec" src={job.img} alt="" />
-                <h4>{job.title}</h4>
-                <img src="/assets/Group 101.png" className="saveit" alt="" />
-              </div> */}
               <div className="job-cardimgsec">
                 <img className="cardimgsec" src="/assets/logomp.png" alt="" />
-                <h4>{job.title}</h4>
+                <h4>{job.role}</h4>
+
                 {/* SAVE ICON */}
                 <div
-                  className={`savejd ${isSaved(job.id) ? "saved" : ""}`}
+                  className={`savejd ${job.is_saved ? "saved" : ""}`}
                   onClick={() => toggleSave(job)}
                 >
                   <img src="/assets/sawed.png" className="saveit" alt="" />
                 </div>
               </div>
-              <p className="company">{job.company}</p>
+
+              <p className="company">{job.company_name}</p>
 
               <div className="job-info">
-                <span> <img src="/assets/Frame.png" alt="" /> {job.salary}</span>
-                <span> <img src="/assets/Frame (1).png" alt="" /> {job.location}</span>
-                <span> <img src="/assets/Frame (2).png" alt="" /> {job.type}</span>
+                <span>
+                  <img src="/assets/Frame.png" alt="" /> {job.salary}
+                </span>
+                <span>
+                  <img src="/assets/Frame (1).png" alt="" /> {job.location}
+                </span>
+                <span>
+                  <img src="/assets/Frame (2).png" alt="" /> {job.work_mode}
+                </span>
               </div>
 
               <div className="skills">
-                {job.skills.map((skill, i) => (
-                  <span key={i}>{skill}</span>
-                ))}
+                {job.required_skill_set
+                  .split(",")
+                  .map((skill, i) => (
+                    <span key={i}>{skill.trim()}</span>
+                  ))}
               </div>
 
               <button
@@ -143,7 +184,8 @@ const Home = () => {
 
         <div className="more-jobs">
           <button onClick={() => navigate("/jobs")}>
-            Explore More Jobs <img className="moreimg" src="/assets/Frame (3).png" alt="" />
+            Explore More Jobs{" "}
+            <img className="moreimg" src="/assets/Frame (3).png" alt="" />
           </button>
         </div>
       </section>

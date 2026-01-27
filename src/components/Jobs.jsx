@@ -1,41 +1,74 @@
 import { useEffect, useState } from "react";
 import "../styles/Jobs.css";
-import jobsData from "../data/jobsData";
 import { useNavigate } from "react-router-dom";
 
 const Jobs = () => {
   const [activeTab, setActiveTab] = useState("recommended");
-  const [savedJobs, setSavedJobs] = useState([]);
+  const [jobs, setJobs] = useState([]);
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
-  /* LOAD SAVED JOBS */
+  /* FETCH JOBS */
   useEffect(() => {
-    const stored = JSON.parse(localStorage.getItem("savedJobs")) || [];
-    setSavedJobs(stored);
+    const fetchJobs = async () => {
+      try {
+        const res = await fetch("https://jobs.mpdatahub.com/api/job/list");
+        const json = await res.json();
+
+        if (json.status) {
+          setJobs(json.data);
+        }
+      } catch (err) {
+        console.error("Failed to fetch jobs");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchJobs();
   }, []);
 
-  /* SAVE / UNSAVE */
-  const toggleSave = (job) => {
-    let updated;
+  /* SAVE / UNSAVE USING API */
+  const toggleSave = async (job) => {
+    try {
+      const success = await fetch(
+        "https://jobs.mpdatahub.com/api/job-save-status",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            id: job.id,
+            is_saved: job.is_saved ? 0 : 1,
+          }),
+        }
+      );
 
-    if (savedJobs.find((j) => j.id === job.id)) {
-      updated = savedJobs.filter((j) => j.id !== job.id);
-    } else {
-      updated = [...savedJobs, job];
+      console.log(success);
+
+      if (success.ok) {
+        setJobs((prev) =>
+          prev.map((j) =>
+            j.id === job.id
+              ? { ...j, is_saved: j.is_saved ? 0 : 1 }
+              : j
+          )
+        );
+      }
+    } catch (err) {
+      console.error("Save job failed");
     }
-
-    setSavedJobs(updated);
-    localStorage.setItem("savedJobs", JSON.stringify(updated));
   };
 
-  const isSaved = (id) => savedJobs.some((job) => job.id === id);
-
   const displayedJobs =
-    activeTab === "recommended" ? jobsData : savedJobs;
+    activeTab === "recommended"
+      ? jobs
+      : jobs.filter((job) => job.is_saved);
 
   return (
     <div className="jobs-pagejd">
-      {/* SEARCH HEADER */}
+      {/* HEADER */}
       <div className="jobs-herojd">
         <h1>
           Find your Perfect <span>Job</span>
@@ -44,35 +77,6 @@ const Jobs = () => {
           Connect with top Companies and discover opportunities that match your
           skills and aspirations.
         </p>
-
-        <div className="search-box">
-          <div className="input-group">
-            <img className="icon" src="/assets/ri_search-line.png" alt="" />
-            <input
-              type="text"
-              placeholder="Job Title, Keywords, or Company"
-            />
-          </div>
-
-          <div className="input-group">
-            <img className="icon" src="/assets/Frame (6).png" alt="" />
-            <input
-              type="text"
-              placeholder="Location"
-            />
-          </div>
-
-          <div className="input-group">
-            <img className="icon" src="/assets/Frame (7).png" alt="" />
-            <select>
-              <option>Job Type</option>
-              <option>Full-time</option>
-              <option>Part-time</option>
-            </select>
-          </div>
-
-          <button className="search-btn">Search Jobs</button>
-        </div>
       </div>
 
       {/* TABS */}
@@ -93,38 +97,46 @@ const Jobs = () => {
 
       {/* JOB LIST */}
       <div className="jobs-gridjd">
-        {displayedJobs.length === 0 ? (
+        {loading ? (
+          <p className="emptyjd">Loading jobs...</p>
+        ) : displayedJobs.length === 0 ? (
           <p className="emptyjd">No jobs found</p>
         ) : (
           displayedJobs.map((job) => (
-            <div className="job-card" jd key={job.id}>
+            <div className="job-card" key={job.id}>
               <div className="job-cardimgsec">
                 <img className="cardimgsec" src="/assets/logomp.png" alt="" />
-                <h4>{job.title}</h4>
+                <h4>{job.role}</h4>
+
                 {/* SAVE ICON */}
                 <div
-                  className={`savejd ${isSaved(job.id) ? "saved" : ""}`}
+                  className={`savejd ${job.is_saved ? "saved" : ""}`}
                   onClick={() => toggleSave(job)}
                 >
                   <img src="/assets/sawed.png" className="saveit" alt="" />
                 </div>
               </div>
-              <p className="companyjd">{job.company}</p>
+
+              <p className="companyjd">{job.company_name}</p>
 
               <div className="job-info">
-                <span> <img src="/assets/Frame.png" alt="" /> {job.salary}</span>
-                <span> <img src="/assets/Frame (1).png" alt="" /> {job.location}</span>
-                <span> <img src="/assets/Frame (2).png" alt="" /> {job.type}</span>
+                <span>{job.salary}</span>
+                <span>{job.location}</span>
+                <span>{job.work_mode}</span>
               </div>
 
               <div className="skillsjd">
-                {job.skills.map((skill, i) => (
-                  <span key={i}>{skill}</span>
-                ))}
+                {job.required_skill_set
+                  .split(",")
+                  .map((skill, i) => (
+                    <span key={i}>{skill.trim()}</span>
+                  ))}
               </div>
 
               <div className="card-footerjd">
-                <span className="posted" jd>{job.posted}</span>
+                <span className="postedjd">
+                  {new Date(job.created_at).toLocaleDateString()}
+                </span>
                 <button
                   onClick={() => navigate(`/jobsdetails/${job.id}`)}
                 >
