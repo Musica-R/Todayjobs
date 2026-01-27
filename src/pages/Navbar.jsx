@@ -14,7 +14,8 @@ const Navbar = () => {
   const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
 
-  const user = JSON.parse(localStorage.getItem("user"));
+  const user = JSON.parse(localStorage.getItem("user")) || {};
+
 
   return (
     <nav className="navbar">
@@ -48,10 +49,11 @@ const Navbar = () => {
           <FiBell />
         </button>
 
-        <div className="profile" onClick={() => navigate("/profile")}>
-          <img src={user.profile_image || ""} alt="profile" />
-          {/* <span>Hina</span> */}
-        </div>
+        {user?.profile_image && (
+          <div className="profile" onClick={() => navigate("/profile")}>
+            <img src={user.profile_image} alt="profile" />
+          </div>
+        )}
 
         {/* Hamburger */}
         <button
