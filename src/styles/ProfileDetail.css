@@ -211,7 +211,45 @@
   object-fit: contain;
 }
 
+.profile-actions {
+  display: flex;
+  gap: 10px;
+  margin-left: auto;
+}
+
+.btn-outline {
+  padding: 8px 14px;
+  border-radius: 6px;
+  border: 1px solid #f57c00;
+  background: transparent;
+  color: #f57c00;
+  cursor: pointer;
+}
+
+.btn-outline:hover {
+  background: #f57c00;
+  color: #fff;
+}
+
+.btn-danger {
+  padding: 8px 14px;
+  border-radius: 6px;
+  border: none;
+  background: #e53935;
+  color: #fff;
+  cursor: pointer;
+}
+
+.btn-danger:hover {
+  background: #c62828;
+}
+
 @media (max-width: 900px) {
+  .profile-actions {
+    flex-direction: column;
+    margin-top: 10px;
+  }
+
   .profile-contentpd {
     grid-template-columns: 1fr;
     margin-top: 10px;
@@ -222,6 +260,13 @@
     max-width: 1200px;
     margin: 10px auto;
     padding: 0 10px;
+  }
+
+  .profile-actions {
+    display: flex;
+    gap: 10px;
+    margin-left: none;
+    margin-left: 0%;
   }
 
   .saved-jobspd {

@@ -1,0 +1,141 @@
+/* Full page center */
+.auth-container1 {
+  min-height: 100vh;
+  background-image: url("../../public/assets/login/bgg.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  font-family: "Inter", "Segoe UI", sans-serif;
+}
+
+.auth-container11 {
+  min-height: auto;
+  background: transparent;
+  background-position: center;
+  background-repeat: no-repeat;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  border-radius: 15px;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: "Inter", "Segoe UI", sans-serif;
+  padding: 3rem;
+  width: 70%;
+}
+
+/* Login card */
+.auth-box1 {
+  width: 100%;
+  max-width: 475px;
+  background: rgb(180, 226, 198);
+  padding: 40px 35px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Heading */
+.auth-box1 h2 {
+  margin-bottom: 25px;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+/* Form */
+.auth-box1 form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Inputs */
+.auth-box1 input {
+  padding: 26px 14px;
+  border-radius: 6px;
+  border: 1px solid #7e7e7e;
+  font-size: 14px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  background: transparent;
+}
+
+.auth-box1 input:focus {
+  outline: none;
+  border-color: black;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+/* Button */
+.auth-box1 button {
+  margin-top: 10px;
+  padding: 12px;
+  background-color: black;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+.auth-box1 button:hover:not(:disabled) {
+  background-color: rgb(180, 226, 198);
+  color: black;
+  border-bottom: 1px solid black;
+}
+
+.auth-box1 button:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.auth-box1 button:disabled {
+  background-color: #9ca3af;
+  cursor: not-allowed;
+}
+
+/* Links */
+.auth-links1 {
+  margin-top: 20px;
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.auth-links1 a {
+  font-size: 14px;
+  color: black;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.auth-links1 a:hover {
+  color: black;
+  text-decoration: underline;
+  color: black;
+  border-bottom: 1px solid black;
+}
+
+.lap {
+  height: 400px;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 480px) {
+  .lap {
+    display: none;
+  }
+
+  .auth-box1 {
+    padding: 15px;
+    width: 92%;
+  }
+
+  .auth-box1 h2 {
+    font-size: 20px;
+  }
+}

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { API_BASE } from "../../utils/auth";
-import "../../styles/Auth.css";
+import "../../styles/Reset.css";
 
 const ResetPassword = () => {
   const navigate = useNavigate();
@@ -39,8 +39,8 @@ const ResetPassword = () => {
   };
 
   return (
-    <div className="auth-container">
-      <div className="auth-box">
+    <div className="auth-container4">
+      <div className="auth-box4">
         <h2>Reset Password</h2>
 
         <form onSubmit={handleSubmit}>
