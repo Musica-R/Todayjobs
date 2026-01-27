@@ -6,8 +6,7 @@ import {
   Navigate,
 } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
-import { useEffect, useState } from "react";
-
+// import { useEffect, useState } from "react";
 import Navbar from "./pages/Navbar";
 import Home from "./components/Home";
 import Jobs from "./components/Jobs";
