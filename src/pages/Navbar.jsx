@@ -49,7 +49,7 @@ const Navbar = () => {
         </button>
 
         <div className="profile" onClick={() => navigate("/profile")}>
-          <img src={user.profile_image} alt="profile" />
+          <img src={user.profile_image || ""} alt="profile" />
           {/* <span>Hina</span> */}
         </div>
 
