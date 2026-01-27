@@ -14,6 +14,8 @@ const Navbar = () => {
   const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
 
+  const user = JSON.parse(localStorage.getItem("user"));
+
   return (
     <nav className="navbar">
       {/* Left */}
@@ -47,8 +49,8 @@ const Navbar = () => {
         </button>
 
         <div className="profile" onClick={() => navigate("/profile")}>
-          <img src="https://i.pravatar.cc/40" alt="profile" />
-          <span>Hina</span>
+          <img src={user.profile_image} alt="profile" />
+          {/* <span>Hina</span> */}
         </div>
 
         {/* Hamburger */}

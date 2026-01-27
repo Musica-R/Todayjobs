@@ -55,7 +55,7 @@ const ProfileDetail = () => {
     <div className="profile-pagepd">
       {/* Header */}
       <div className="profile-headerpd">
-        <img src="https://i.pravatar.cc/80" alt="profile" />
+        <img src={user.profile_image} alt="profile" />
 
         <div className="profile-head-content">
           <h3>{user.name}</h3>

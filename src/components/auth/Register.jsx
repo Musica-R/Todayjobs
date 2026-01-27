@@ -15,20 +15,39 @@ const Register = () => {
     dob: "",
     location: "",
     role: "",
+    profile_image: null, // 👈 added
   });
 
-  const handleChange = (e) =>
-    setForm({ ...form, [e.target.name]: e.target.value });
+  const handleChange = (e) => {
+    const { name, value, files } = e.target;
+
+    // Handle file upload
+    if (name === "profile_image") {
+      setForm({ ...form, profile_image: files[0] });
+    } else {
+      setForm({ ...form, [name]: value });
+    }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
 
     try {
+      // Use FormData instead of JSON
+      const formData = new FormData();
+      Object.keys(form).forEach((key) => {
+        if (form[key]) {
+          formData.append(key, form[key]);
+        }
+      });
+
+      console.log(form.profile_image);
+      
+
       const res = await fetch(`${API_BASE}/register`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
+        body: formData, // 👈 no Content-Type needed
       });
 
       const data = await res.json();
@@ -47,10 +66,11 @@ const Register = () => {
     <div className="auth-container2">
       <div className="auth-container22">
         <img src="/assets/login/lap.png" className="lap" alt="" />
+
         <div className="auth-box2">
           <h2>TodayJobs - Create Account</h2>
 
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit} encType="multipart/form-data">
             <input name="name" placeholder="Full Name" required onChange={handleChange} />
             <input type="email" name="email" placeholder="Email" required onChange={handleChange} />
             <input name="mobile" placeholder="Phone Number" required onChange={handleChange} />
@@ -64,9 +84,19 @@ const Register = () => {
               <option value="hr">HR</option>
             </select>
 
+            {/* ✅ Optional Profile Image Upload */}
+            <input
+              type="file"
+              name="profile_image"
+              accept="image/*"
+              onChange={handleChange}
+            />
+
             <input type="password" name="password" placeholder="Password" required onChange={handleChange} />
 
-            <button disabled={loading}>{loading ? "Registering..." : "Register"}</button>
+            <button disabled={loading}>
+              {loading ? "Registering..." : "Register"}
+            </button>
           </form>
 
           <div className="auth-links2">
