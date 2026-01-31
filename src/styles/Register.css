@@ -146,6 +146,19 @@
     width: 100%;
   }
 
+  .auth-box2 button {
+    margin-top: 0px;
+    padding: 12px;
+    transition: background-color .2s, transform .1s;
+    width: 100%;
+  }
+
+  .auth-box2 form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
   .auth-box2 {
     padding: 15px;
     width: 100%;
