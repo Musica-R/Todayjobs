@@ -64,7 +64,7 @@
   font-size: 14px;
   background-color: transparent;
   transition: border-color 0.2s, box-shadow 0.2s;
-      width: 47%;
+  width: 47%;
 }
 
 /* Focus */
@@ -133,10 +133,29 @@
 @media (max-width: 480px) {
   .auth-box2 {
     padding: 15px;
-    width: 92%;
+    width: 100%;
   }
 
   .auth-box2 h2 {
     font-size: 20px;
+  }
+
+  .auth-box2 input,
+  .auth-box2 select {
+    background-color: initial;
+    border: 1px solid #7e7e7e;
+    border-radius: 6px;
+    font-size: 14px;
+    padding: 10px;
+    transition: border-color .2s, box-shadow .2s;
+    width: 100%;
+  }
+
+  .auth-container22 {
+    display: flex;
+    gap: 1rem;
+    justify-content: space-between;
+    padding: 0.5rem;
+    width: 95%;
   }
 }
