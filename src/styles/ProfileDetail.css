@@ -246,7 +246,7 @@
 
 @media (max-width: 900px) {
   .profile-actions {
-    flex-direction: column;
+    /* flex-direction: column; */
     margin-top: 10px;
   }
 
