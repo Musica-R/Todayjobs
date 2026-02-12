@@ -15,8 +15,7 @@ const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const user = JSON.parse(localStorage.getItem("user")) || {};
-
-
+ 
   return (
     <nav className="navbar">
       {/* Left */}
